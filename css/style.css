@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #c0c0c0;
+    text-align: center;
+}
+
+h1 {
+    color: #555;
+}
+
+main {
+    background-color: #EEEEEE;
+    text-align: center;
+    color: #555;
+}
+
+.skill {
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    margin: 20px 0;
+    padding: 20px 0;
+}
+
+footer {
+    background-color: #C0C0C0;
+    text-align: center;
+    color: #555;
+}
