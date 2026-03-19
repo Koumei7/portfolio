@@ -1,0 +1,14 @@
+body {
+    text-align: center;
+    background-color: #ccc;
+}
+
+li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
