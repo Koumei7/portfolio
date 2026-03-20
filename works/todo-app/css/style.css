@@ -41,3 +41,9 @@ li {
     text-decoration: line-through;
     color: gray;
 }
+
+footer {
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
