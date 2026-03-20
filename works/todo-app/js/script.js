@@ -27,11 +27,23 @@ function render() {
 
         checkbox.addEventListener("change",() =>{
             todos[index].done = checkbox.checked;
+
+            if (checkbox.checked) {
+                span.classList.add("completed");
+            } else {
+                span.classList.remove("completed");
+            };
+
             save();
             });
         //テキスト
         const span = document.createElement("span");
         span.textContent = todo.text;
+
+        //完了クラス
+        if (todo.done) {
+            span.classList.add("completed");
+        };
 
         //削除ボタン
         const deleteBtn = document.createElement("button");
@@ -64,10 +76,15 @@ function render() {
             render();
         };
 
+        const buttons = document.createElement("div");
+        buttons.classList.add("buttons");
+
+        buttons.appendChild(deleteBtn);
+        buttons.appendChild(editBtn);
+
         li.appendChild(checkbox);
         li.appendChild(span);
-        li.appendChild(deleteBtn);
-        li.appendChild(editBtn);
+        li.appendChild(buttons);
 
         list.appendChild(li);
 
