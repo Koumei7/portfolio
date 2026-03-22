@@ -50,6 +50,14 @@ app.post("/api/memos", (req, res) => {
   );
 });
 
+app.get("/api/memos", (req, res) => {
+  db.all("SELECT * FROM memos", (err, rows) => {
+    if (err) return res.status(500).json(err);
+
+    res.json(rows);
+  });
+});
+
 app.listen(3000, () => {
   console.log("起動: http://localhost:3000");
 });
