@@ -5,6 +5,7 @@ const app = express();
 const db = new sqlite3.Database("./db/database.sqlite");
 
 app.use(express.static("public"));
+app.use(express.json());
 
 // テーブル作成
 db.serialize(() => {
@@ -16,10 +17,7 @@ db.serialize(() => {
   `);
 });
 
-
-
-app.lisapp.use(express.json()); // ← まだなら追加
-
+// 追加
 app.post("/api/memos", (req, res) => {
   const { content } = req.body;
 
@@ -28,32 +26,15 @@ app.post("/api/memos", (req, res) => {
     [content],
     function (err) {
       if (err) return res.status(500).json(err);
-
       res.json({ id: this.lastID });
     }
   );
 });
 
-app.use(express.json()); // ← まだなら追加
-
-app.post("/api/memos", (req, res) => {
-  const { content } = req.body;
-
-  db.run(
-    "INSERT INTO memos (content) VALUES (?)",
-    [content],
-    function (err) {
-      if (err) return res.status(500).json(err);
-
-      res.json({ id: this.lastID });
-    }
-  );
-});
-
+// 取得
 app.get("/api/memos", (req, res) => {
   db.all("SELECT * FROM memos", (err, rows) => {
     if (err) return res.status(500).json(err);
-
     res.json(rows);
   });
 });
