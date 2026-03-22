@@ -4,6 +4,7 @@ const sqlite3 = require("sqlite3").verbose();
 const app = express();
 const db = new sqlite3.Database("./db/database.sqlite");
 
+// ミドルウェア
 app.use(express.static("public"));
 app.use(express.json());
 
@@ -39,6 +40,7 @@ app.get("/api/memos", (req, res) => {
   });
 });
 
+// 起動
 app.listen(3000, () => {
   console.log("起動: http://localhost:3000");
 });
