@@ -40,6 +40,17 @@ app.get("/api/memos", (req, res) => {
   });
 });
 
+// 削除
+app.delete("/api/memos/:id", (req, res) => {
+  const id = req.params.id;
+
+  db.run("DELETE FROM memos WHERE id = ?", [id], (err) => {
+    if (err) return res.status(500).json(err);
+
+    res.json({ success: true });
+  });
+});
+
 // 起動
 app.listen(3000, () => {
   console.log("起動: http://localhost:3000");

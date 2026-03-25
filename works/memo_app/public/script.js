@@ -12,6 +12,13 @@ async function load() {
   memos.forEach(memo => {
     const li = document.createElement("li");
     li.textContent = memo.content;
+
+    //削除ボタン
+    li.addEventListener("click", () => {
+    deleteMemo(memo.id);
+    });
+
+
     list.appendChild(li);
   });
 }
@@ -32,6 +39,14 @@ addBtn.addEventListener("click", async () => {
   input.value = "";
   load();
 });
+
+async function deleteMemo(id) {
+  await fetch(`/api/memos/${id}`, {
+    method: "DELETE"
+  });
+
+  load();
+}
 
 // 初期表示
 load();
